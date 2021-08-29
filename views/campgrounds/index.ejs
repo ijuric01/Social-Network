@@ -1,0 +1,83 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="pb-5">
+        <h1 class="pb-2 border-bottom mb-3">ALL Campgrounds </h1>
+
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <% for( let campground of campgrounds) { %>
+                <div class="col" style="height: 320px">
+                    <div class="
+					card card-cover
+					h-100
+					overflow-hidden
+					text-white
+					bg-dark
+					rounded-5
+					shadow-lg
+				">
+                        <% if (campground.images.length) { %>
+                            <div class="
+						card
+						h-100
+						card-cover
+						overflow-hidden
+						text-white
+						bg-dark
+						rounded-5
+						shadow-lg
+						center-card-img
+					" style="background-image: url('<%=campground.images[0].url%>')">
+                                <% } else{ %>
+                                    <div class="
+							card
+							h-100
+							card-cover
+							overflow-hidden
+							text-white
+							bg-dark
+							rounded-5
+							shadow-lg
+							center-card-img
+						">
+                                        <% } %>
+                                            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                                                <a href="/campgrounds/<%=campground._id%>" class="text-light"
+                                                    id="card-title-decoration">
+                                                    <p class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold card-text-shadow"
+                                                        id="camp-title">
+                                                        <%= campground.title %>
+                                                    </p>
+                                                </a>
+                                                <ul class="
+									d-flex
+									flex-wrap
+									list-unstyled
+									mt-auto
+									align-items-baseline
+								">
+                                                    <li class="
+										me-auto
+										d-flex
+										justify-content-start
+										align-items-center
+									" id="user">
+
+                                                        <span class="ms-2 card-text-shadow fw-bold">
+                                                            <%=campground.author.username%>
+                                                        </span>
+                                                    </li>
+                                                    <li class="ms-auto d-flex align-items-center" id="location">
+
+                                                        <small class="card-text-shadow fw-bold">
+                                                            <%= campground.location%>
+                                                        </small>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                    </div>
+                            </div>
+                    </div>
+                    <% } %>
+                </div>
+        </div>
+    </div>
